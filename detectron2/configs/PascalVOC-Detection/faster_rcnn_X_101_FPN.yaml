@@ -1,0 +1,35 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "./configs/ImageNetPretrained/MSRA/X101-FPN-pretrained-wsi.pkl"
+  PIXEL_STD: [57.375, 57.120, 58.395]
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+    STRIDE_IN_1X1: False  # this is a C2 model
+    NUM_GROUPS: 32
+    WIDTH_PER_GROUP: 8
+  ROI_HEADS:
+    NUM_CLASSES: 6
+  ROI_BOX_HEAD:
+    NUM_FC: 2
+    NUM_CONV: 0
+INPUT:
+  MIN_SIZE_TRAIN: (1000,)
+  MIN_SIZE_TEST: 1000
+  MAX_SIZE_TRAIN: 1000
+  MAX_SIZE_TEST: 1000
+  CROP:
+    ENABLED: False
+  FLIP:
+    ENABLED: True
+  CONTRAST:
+    ENABLED: False
+DATASETS:
+  TRAIN: ('voc_2007_trainval',)
+  TEST: ('voc_2007_val',)
+SOLVER:
+  STEPS: (30000,)
+  MAX_ITER: 40000 # 3.5 epochs 
+  WARMUP_ITERS: 100
+  IMS_PER_BATCH: 4  #  for 2 gpus
+  BASE_LR: 0.0050  #  for 2 gpus
