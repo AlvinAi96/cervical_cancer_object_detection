@@ -1,6 +1,6 @@
 ## Cervical Cancer Object Detection
 This code is for the competition of ['Digitized Human Body' Visual Challenge - Intelligent Diagnosis of Cervical Cancer Risk](https://tianchi.aliyun.com/competition/entrance/231757/introduction). The purpose of the competition is to provide large-scale thin-layer cell data of cervical cancer labeled by professional doctors. The competitors can propose and comprehensively use methods such as object detection and deep learning to locate abnormal squamous epithelial cells (i.e., ASC) of cervical cancer cytology and classify cervical cancer cells through images, which improve the speed and accuracy of model detection, and assist doctors in real diagnosis.  
-！[image]()
+![image](https://tianchi-public.oss-cn-hangzhou.aliyuncs.com/public/files/forum/156976273635179161569762735242.jpeg)
 Note: Data and kfbreader is not allowed to be published.  
 
 The object detection steps are shown as below:    
@@ -29,10 +29,28 @@ python setup.py --user
 cd <ROOT>/detectron2
 python setup.py build develop --user
 ```
+	
+### 2. Data Preparation: 
+(1) put train/test dataset into <ROOT>/Data/Train and <ROOT>/Data/test respectively.  
+```
+cd <ROOT>
+mkdir /Data/Train
+mkdir /Data/test	
+```
+(2) Generate training dataset for model.  
+```
+cd <ROOT>/Data
+python roi_based_data_generation.py
 
-### 步骤2：准备VOC2007类型数据集
-Pascal VOC2007数据文件结构如下：  
-
+# or
+python pos_based_data_generation.py
+```
+(3) Generate extra rotated images with large bboxes and their labels.  
+```
+python big_rotate_object.py
+```
+(4) Transfer prepared datasets from <ROOT>/Data to <ROOT>/detectron2/VOC2007.  
+<ROOT>/detectron2/VOC2007 file structure follows the structure of Pascal VOC2007 data file：  
 ```
 VOC2007/
   Annotations/
@@ -49,20 +67,16 @@ VOC2007/
 	patch1.jpg
 	...	
 ```
-
-(1) 生成文件夹：  
-
+In order to gain the above structure format, run the following commands:  
 ```
-cd /FSF/detectron2/datasets
+cd <ROOT>/detectron2
+mkdir / datasets
 mkdir /VOC2007
 mkdir /VOC2007/ImageSets
 mkdir /VOC2007/ImageSets/Main
 mkdir /VOC2007/Annotations
 mkdir /VOc2007/JPEGImages
 ```
-
-注：由于阿里云没开放权限，以上文件夹创建只能手动生成。  
-
 (2) 划分数据集并形成train/val/trainval.txt文件至/detectron2/datasets/VOC2007/ImageSets/Main/。  
 
 ```
