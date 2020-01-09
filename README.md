@@ -100,7 +100,7 @@ find Data/test/ -name "*.json" | xargs -i cp {} detectron2/datasets/VOC2007/test
 
 ```
 ### 3. Model Training and Evaluation: 
-You can visit [Model_Zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) to download ImageNet pretrained model weight file (e.g., X-101-32x8d.pkl), and then put pkl file under ``<ROOT>/detectron2/configs/ImageNetPretrained/MSRA/``.  
+You can visit [Model_Zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) to download ImageNet pretrained model weight file (e.g., X-101-32x8d.pkl), and then put pkl file under ``<ROOT>/detectron2/configs/ImageNetPretrained/MSRA/``. In this competition, we use X101-FPN model.  
 Modify hyperparameter setting file ``/detectron2/config/PascalVOC-Detection/<faster_rcnn_xxx.yaml>`` and then run:  
 ```
 cd <ROOT>/detectron2
