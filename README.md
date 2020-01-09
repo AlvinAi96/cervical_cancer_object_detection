@@ -1,32 +1,35 @@
-###  步骤1：环境配置  
-(1) kfbreader配置：  
-参考教程：[https://tianchi.aliyun.com/forum/postDetail?spm=5176.12586969.1002.3.76de2a3c3k6DZf&postId=83286](https://tianchi.aliyun.com/forum/postDetail?spm=5176.12586969.1002.3.76de2a3c3k6DZf&postId=83286)  
-(2) Detectron2 环境配置：  
-下载fvcore压缩包，链接：[https://github.com/facebookresearch/fvcore](https://github.com/facebookresearch/fvcore)  
-下载cocoapi压缩包，链接：[https://github.com/cocodataset/cocoapi.git](https://github.com/cocodataset/cocoapi.git)  
-下载detectron2压缩包，链接：[https://github.com/facebookresearch/detectron2](https://github.com/facebookresearch/detectron2)  
-将上面三个包传到PAI-DSW平台上，并且解压三个压缩包。  
-进入fvcore目录，运行命令
+## Cervical Cancer Object Detection
+This code is for the competition of ['Digitized Human Body' Visual Challenge - Intelligent Diagnosis of Cervical Cancer Risk](https://tianchi.aliyun.com/competition/entrance/231757/introduction). The purpose of the competition is to provide large-scale thin-layer cell data of cervical cancer labeled by professional doctors. The competitors can propose and comprehensively use methods such as object detection and deep learning to locate abnormal squamous epithelial cells (i.e., ASC) of cervical cancer cytology and classify cervical cancer cells through images, which improve the speed and accuracy of model detection, and assist doctors in real diagnosis.  
+！[image]()
+Note: Data and kfbreader is not allowed to be published.  
+
+The object detection steps are shown as below:    
+### 1. Enviroment Preparation:  
+(1) **kfbreader**:  
+Since the kfb data need to be loaded by specified SDK (i.e., kfbreader), we have to setup kfbreader provided by the match orgnaisers. The specific tutorial can be visited by the [link](https://tianchi.aliyun.com/forum/postDetail?spm=5176.12586969.1002.3.76de2a3c3k6DZf&postId=83286).  
+Remember to add kfbreader to the below paths:
 ```
-python setup.py --user
-```
-进入cocoapi/Pythonapi目录，运行命令
-```
-python setup.py --user
-```
-进入detectron2目录，运行命令
-```
-python setup.py build develop --user
-```
-把kfbreader加入系统路径  
-```
-# 该方法不可行
-cp -f ./bashrc ~/.bashrc
-source ~/.bashrc
-# 得手动输入：
 export PYTHONPATH=/home/admin/jupyter/kfbreader-linux:$PYTHONPATH
 export LD_LIBRARY=/opt/conda/lib:/home/admin/jupyter/kfbreader-linux:$LD_LIBRARY_PATH
 ```
+(2) **detectron2**:
+More information, please visit [detectron2 install tutorial](https://github.com/AlvinAi96/cervical_cancer_object_detection/blob/master/detectron2/INSTALL.md)  
+Before downloading [fvcore](https://github.com/facebookresearch/fvcore) [cocoapi](https://github.com/cocodataset/cocoapi.git), make sure you have python >= 3.6 and pytorch 1.3.   
+Setup detecron2 by running the following commands. (Note: <ROOT> is the root path of detectron2 file path)  
+```
+# setup fvcore
+cd <ROOT>/fvcore-master
+python setup.py --user
+
+# setup cocoapi
+cd <ROOT>/cocoapi-master/Pythonapi
+python setup.py --user
+
+# setup detectron2
+cd <ROOT>/detectron2
+python setup.py build develop --user
+```
+
 ### 步骤2：准备VOC2007类型数据集
 Pascal VOC2007数据文件结构如下：  
 
