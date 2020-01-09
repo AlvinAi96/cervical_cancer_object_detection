@@ -246,7 +246,7 @@ export LD_LIBRARY=/opt/conda/lib:/home/admin/jupyter/kfbreader-linux:$LD_LIBRARY
 |:---:|:---:|:---:|:---:|:---:|  
 |ASC-H|401|3549|2244|6224|  
 |ASC-US|55|3496|2394|5945|  
-|HSIL|183|1111|1524|1818|  
+|HSIL|183|1111|1524|2818|  
 |LSIL|26|1419|1937|3382|  
 |Candida|9|286|1357|1652|  
 |Trichomonas|10436|1095|23|11554|  
@@ -488,7 +488,7 @@ export LD_LIBRARY=/opt/conda/lib:/home/admin/jupyter/kfbreader-linux:$LD_LIBRARY
 |增加前|20198|19383|9189|10954|5759|36846|102329|   
 |增加后|20201|19383|9191|10956|6498|36846|103095|   
 
-注：patch数是指该异常细胞在数据集里有多bbox框。  
+注：roi数是指该异常细胞在数据集里有多少bbox框。  
 总结：该实验证实了2020年1月4日第3点的猜测。  
 
 ### 2020年1月7日
