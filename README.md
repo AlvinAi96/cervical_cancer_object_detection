@@ -1,7 +1,7 @@
 ## Cervical Cancer Object Detection
 This code is for the competition of ['Digitized Human Body' Visual Challenge - Intelligent Diagnosis of Cervical Cancer Risk](https://tianchi.aliyun.com/competition/entrance/231757/introduction). The purpose of the competition is to provide large-scale thin-layer cell data of cervical cancer labeled by professional doctors. The competitors can propose and comprehensively use methods such as object detection and deep learning to locate abnormal squamous epithelial cells (i.e., ASC) of cervical cancer cytology and classify cervical cancer cells through images, which improve the speed and accuracy of model detection, and assist doctors in real diagnosis.  
 ![image](https://tianchi-public.oss-cn-hangzhou.aliyuncs.com/public/files/forum/156976273635179161569762735242.jpeg)
-Note: Data and kfbreader is not allowed to be published.  
+Note: Data and kfbreader is not allowed to be published, but [experiment details](https://mp.weixin.qq.com/s?__biz=MzUyNzA1OTcxNg==&mid=2247483668&idx=1&sn=e9c3d6afd96ebdd5c330825b6e5d5188&chksm=fa041f7fcd739669af9cc181ffcd9bf1bd3ed32c156d7c8adb860104ef4ac0a87cb5e8420140&token=1035786795&lang=zh_CN#rd) are pulished..  
 
 The object detection steps are shown as below:    
 ### 1. Enviroment Preparation:  
